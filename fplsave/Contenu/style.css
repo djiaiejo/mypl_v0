@@ -1,0 +1,28 @@
+body {
+    padding-top: 70px;
+    padding-bottom: 40px;
+}
+
+footer {
+    margin-top: 20px;
+}
+
+#imgAccueil, #imgAlbum {
+    border-radius: 7px; 
+    border:4px solid white; 
+    box-shadow: 1px 1px 10px #555;
+}
+
+#btnAjouter {
+    margin-top : 15px;
+}
+
+#lienIdentification {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+/* Décale vers le bas le contenu des onglets */
+.nav-tabs {
+    margin-bottom: 20px;
+}

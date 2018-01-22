@@ -1,0 +1,132 @@
+<?php $this->titre = "Players"; ?>
+
+<?php require 'Vue/_Commun/barreNavigation.php'; ?>
+
+
+<div class="container">
+	<div class="row">
+        <div class="col-sm-12">
+            <div class="page-header">
+                <h1>Players</h1>
+            </div>
+			<p></p>
+        </div>
+        <div class="col-sm-12">
+            <input type="search" id="search" value="" class="form-control" placeholder="Search">
+			<table class="table" id="table">
+				<thead>
+					<tr>
+						<th>Player</th>
+						<th>Position</th>
+						<th>Score</th>
+						<th>Game played</th>
+						<th>Shots</th>
+						<th>Passes</th>
+						<th>Take ons</th>
+						<th>Defensive</th>
+						<th>Aerial duels</th>
+						<th>Fouls</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php foreach($players as $playerbyposition){ ?>
+						<?php foreach($playerbyposition as $player){ ?>
+							<tr>
+								<td><?php echo $player['name'];?></td>
+								<td><?php echo $player['position'];?></td>
+								<td>...</td>
+								<td><?php echo $player['nbgameweek'];?></td>
+								<td>
+									<a href="#" data-toggle="tooltip" data-placement="bottom" data-html="true" title="
+										<h3>Shots</h3>
+										<p>Off target : <?php echo $player['shotsofftarget'];?></p>
+										<p>On target : <?php echo $player['shotsontarget'];?></p>
+										<p>Goal : <?php echo $player['shotsgoal'];?></p>
+										<p>Blocked : <?php echo $player['shotsblocked'];?></p>
+										">S</a>
+								</td>
+								<td>
+									<a href="#" data-toggle="tooltip" data-placement="bottom" data-html="true" title="
+										<h3>Passes</h3>
+										<p>Failed : <?php echo $player['passesfailed'];?></p>
+										<p>Success : <?php echo $player['passessuccess'];?></p>
+										<p>Goal assist : <?php echo $player['passesgoalassist'];?></p>
+										<p>Chance created : <?php echo $player['passeschancecreated'];?></p>
+										">P</a>
+								</td>
+								<td>
+									<a href="#" data-toggle="tooltip" data-placement="bottom" data-html="true" title="
+										<h3>Take ons</h3>
+										<p>Failed : <?php echo $player['takeonsfail'];?></p>
+										<p>Success : <?php echo $player['takeonssuccess'];?></p>
+										">T</a>
+								</td>
+								<td>
+									<a href="#" data-toggle="tooltip" data-placement="bottom" data-html="true" title="
+										<h3>Defensive</h3>
+										<p>Failed tackle : <?php echo $player['defensivefailedtackle'];?></p>
+										<p>Successful tackle : <?php echo $player['defensivesuccessfultackle'];?></p>
+										<p>Interceptions : <?php echo $player['defensiveinterceptions'];?></p>
+										<p>Successful clearance : <?php echo $player['defensivesuccessfulclearance'];?></p>
+										<p>Failed clearance : <?php echo $player['defensivefailedclearance'];?></p>
+										<p>Ballrecoverye : <?php echo $player['defensiveballrecoverye'];?></p>
+										<p>blocked shot : <?php echo $player['defensiveblockedshot'];?></p>
+										<p>blocked cross : <?php echo $player['defensiveblockedcross'];?></p>
+										">D</a>
+								</td>
+								<td>
+									<a href="#" data-toggle="tooltip" data-placement="bottom" data-html="true" title="
+										<h3>Aerial duel</h3>
+										<p>Won : <?php echo $player['aerialduelswon'];?></p>
+										<p>Lost : <?php echo $player['aerialduelslost'];?></p>
+										">A</a>
+								</td>
+								<td>
+									<a href="#" data-toggle="tooltip" data-placement="bottom" data-html="true" title="
+										<h3>Fouls</h3>
+										<p>Commited : <?php echo $player['foulscommited'];?></p>
+										<p>Suffered : <?php echo $player['foulssuffered'];?></p>
+										">F</a>
+								</td>
+							</tr>
+						<?php } ?>
+					<?php } ?>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+		
+
+<script>
+
+	$(function () {
+		$( '#table' ).searchable({
+			striped: true,
+			oddRow: { 'background-color': '#f5f5f5' },
+			evenRow: { 'background-color': '#fff' },
+			searchType: 'fuzzy'
+		});
+		
+		$( '#searchable-container' ).searchable({
+			searchField: '#container-search',
+			selector: '.row',
+			childSelector: '.col-xs-4',
+			show: function( elem ) {
+				elem.slideDown(100);
+			},
+			hide: function( elem ) {
+				elem.slideUp( 100 );
+			}
+		})
+	});
+	
+	$(document).ready(function(){
+		$('[data-toggle="tooltip"]').tooltip(); 
+	});
+
+</script>
+
+
+
+
